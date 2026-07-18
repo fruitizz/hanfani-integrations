@@ -1,0 +1,96 @@
+{
+  "name": "@hanfani/integrations",
+  "version": "0.1.0",
+  "description": "External-service integrations (Gmail) for the Hanfani agent framework.",
+  "license": "MIT",
+  "author": "Fruitizz",
+  "type": "module",
+  "sideEffects": false,
+  "files": [
+    "src/**/*.mjs",
+    "src/**/*.d.ts",
+    "skills"
+  ],
+  "exports": {
+    "./gmail/auth": {
+      "types": "./src/gmail/auth.d.ts",
+      "default": "./src/gmail/auth.mjs"
+    },
+    "./gmail/client": {
+      "types": "./src/gmail/client.d.ts",
+      "default": "./src/gmail/client.mjs"
+    },
+    "./gmail/format": "./src/gmail/format.mjs",
+    "./gmail/list-unread": {
+      "types": "./src/gmail/list-unread.d.ts",
+      "default": "./src/gmail/list-unread.mjs"
+    },
+    "./gmail/get-email": {
+      "types": "./src/gmail/get-email.d.ts",
+      "default": "./src/gmail/get-email.mjs"
+    },
+    "./gmail/get-latest-email": {
+      "types": "./src/gmail/get-latest-email.d.ts",
+      "default": "./src/gmail/get-latest-email.mjs"
+    },
+    "./gmail/create-draft": {
+      "types": "./src/gmail/create-draft.d.ts",
+      "default": "./src/gmail/create-draft.mjs"
+    },
+    "./gmail/modify": {
+      "types": "./src/gmail/modify.d.ts",
+      "default": "./src/gmail/modify.mjs"
+    },
+    "./gmail/check-credentials": {
+      "types": "./src/gmail/check-credentials.d.ts",
+      "default": "./src/gmail/check-credentials.mjs"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "homepage": "https://github.com/fruitizz/hanfani-integrations#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fruitizz/hanfani-integrations.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fruitizz/hanfani-integrations/issues"
+  },
+  "keywords": [
+    "hanfani",
+    "agent",
+    "workflow",
+    "ai",
+    "gmail",
+    "integration"
+  ],
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "build": "node -e \"console.log('@hanfani/integrations ships pre-authored src/*.mjs + *.d.ts \\u2014 no build step')\""
+  },
+  "dependencies": {
+    "@hanfani/core": "^0.1.4",
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "zod": "^3.25.76"
+  },
+  "peerDependencies": {
+    "googleapis": "^173.0.0"
+  },
+  "peerDependenciesMeta": {
+    "googleapis": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "node": ">=20.19"
+  },
+  "packageManager": "pnpm@9.12.0",
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "googleapis": "^173.0.0",
+    "typescript": "^7.0.2",
+    "vitest": "^2.1.0"
+  }
+}
