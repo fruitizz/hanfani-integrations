@@ -1,1 +1,10 @@
-pnpm exec commitlint --edit "$1"
+#!/usr/bin/env sh
+msg_file="$1"
+tmp="$(mktemp)"
+# Strip Cursor co-author / Made-with trailers before linting.
+sed -E '/cursoragent@cursor\.com/Id;/^Made-with:[[:space:]]*Cursor/Id' "$msg_file" > "$tmp"
+# Drop trailing blank lines left after trailer removal.
+# shellcheck disable=SC2016
+awk 'NF{p=1} p{print}' "$tmp" | awk 'BEGIN{n=0} {a[++n]=$0} END{while(n>0 && a[n]~/^[[:space:]]*$/) n--; for(i=1;i<=n;i++) print a[i]}' > "$msg_file"
+rm -f "$tmp"
+pnpm exec commitlint --edit "$msg_file"
